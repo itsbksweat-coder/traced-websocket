@@ -1,0 +1,11 @@
+name = "traced-websocket"
+main = "src/index.js"
+compatibility_date = "2026-09-12"
+
+[[durable_objects.bindings]]
+name = "TRIGGER_ROOM"
+class_name = "TriggerRoom"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["TriggerRoom"]
