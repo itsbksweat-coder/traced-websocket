@@ -2,8 +2,7 @@ repeat task.wait() until game:IsLoaded()
 
 local UserInputService = game:GetService("UserInputService")
 
--- Replace this with the hostname Cloudflare gives this Worker.
-local WS_URL = "wss://YOUR-WORKER.workers.dev/ws"
+local WS_URL = "wss://traced-websocket.xyzcheatz.workers.dev/ws"
 
 local socket
 local connected = false
