@@ -25,12 +25,15 @@ export class TriggerRoom {
     if (typeof message !== "string") return;
 
     const command = message.trim().toUpperCase();
-    if (command !== "TRIGGER_T") return;
+
+    if (command !== "TRIGGER_T" && command !== "TRIGGER_R") {
+      return;
+    }
 
     // Broadcast to every connected client, including the sender.
     for (const socket of this.ctx.getWebSockets()) {
       try {
-        socket.send("TRIGGER_T");
+        socket.send(command);
       } catch {}
     }
   }
@@ -56,12 +59,12 @@ export default {
       return Response.json({
         ok: true,
         websocket: "/ws",
-        command: "TRIGGER_T",
+        commands: ["TRIGGER_T", "TRIGGER_R"],
       });
     }
 
     if (url.pathname === "/") {
-      return new Response("Traced WebSocket relay is online.", {
+      return new Response("Traced + Riddler WebSocket relay is online.", {
         headers: { "content-type": "text/plain; charset=utf-8" },
       });
     }
